@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="Tipos de Contacto" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="TipoContacto.aspx.cs" Inherits="Empleos.TipoContacto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -100,18 +99,16 @@
                                             <div class="row">
                                                 <div class="col-3">IdTipoContacto</div>
                                                 <div class="col-9">
-                                                    <td>
-                                                        <asp:TextBox ID="txtIdTipoContacto" runat="server" Text='<%# Bind("IdTipoContacto") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                                    <asp:TextBox ID="txtIdTipoContacto" runat="server" Text='<%# Bind("IdTipoContacto") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">TipoContacto</div>
                                                 <div class="col-9">
-                                                    <td>
-                                                        <asp:TextBox ID="txtTipoContacto" runat="server" Text='<%# Bind("TipoContacto") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                                    <asp:TextBox ID="txtTipoContacto" runat="server" Text='<%# Bind("TipoContacto") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
-                                            
+
 
                                         </div>
 
@@ -158,15 +155,13 @@
                                             <div class="row">
                                                 <div class="col-3">IdTipoContacto</div>
                                                 <div class="col-9">
-                                                    <td>
-                                                        <asp:TextBox ID="txtIdTipoContacto" runat="server" Text='<%# Bind("IdTipoContacto") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                                        <asp:TextBox ID="txtIdTipoContacto" runat="server" Text='<%# Bind("IdTipoContacto") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">TipoContacto</div>
                                                 <div class="col-9">
-                                                    <td>
-                                                        <asp:TextBox ID="txtTipoContacto" runat="server" Text='<%# Bind("TipoContacto") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                                        <asp:TextBox ID="txtTipoContacto" runat="server" Text='<%# Bind("TipoContacto") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
 
