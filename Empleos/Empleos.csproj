@@ -140,6 +140,7 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="About.aspx" />
+    <Content Include="Bachillerato.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
     <Content Include="Content\bootstrap-datepicker.standalone.css" />
@@ -1909,6 +1910,13 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Bachillerato.aspx.cs">
+      <DependentUpon>Bachillerato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bachillerato.aspx.designer.cs">
+      <DependentUpon>Bachillerato.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Boot.Master.cs">
       <DependentUpon>Boot.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
