@@ -28,7 +28,7 @@
             runat="server"
             DataSourceID="TipoContactoDS"
             DataKeyNames="IdTipoContacto"
-            OnItemCommand="LicitacionListView_ItemCommand">
+            OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
                     <table class="table table-striped" style="font-size: x-small; font-family: 'Segoe UI'">

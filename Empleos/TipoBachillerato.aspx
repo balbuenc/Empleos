@@ -1,9 +1,8 @@
-﻿<%@ Page Title="Bachilleratos" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Bachillerato.aspx.cs" Inherits="Empleos.Bachillerato" %>
-
+﻿<%@ Page Title="Tipos de Bachillerato" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="TipoBachillerato.aspx.cs" Inherits="Empleos.TipoBachillerato" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="page-header">
+     <div class="page-header">
         <div class="alert alert-primary" role="alert">
             <div class="row">
                 <div class="col-10">
@@ -23,18 +22,17 @@
     </div>
 
     <div class="container-fluid">
-        <asp:ListView ID="BachilleratoListView"
+        <asp:ListView ID="TipoBachilleratoListView"
             runat="server"
-            DataSourceID="BachilleratoDS"
-            DataKeyNames="IdBachillerato"
+            DataSourceID="TipoBachilleratoDS"
+            DataKeyNames="IdTipoBachillerato"
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
                     <table class="table table-striped" style="font-size: x-small; font-family: 'Segoe UI'">
                         <thead>
-                            <th>IdBachillerato</th>
                             <th>IdTipoBachillerato</th>
-                            <th>Enfasis</th>
+                            <th>TipoBachillerato</th>
                             <th>...</th>
                             <th>...</th>
                         </thead>
@@ -48,21 +46,19 @@
 
                 <tr>
                     <td>
-                        <asp:Label ID="lblIdBachillerato" runat="server" Text='<%# Eval("IdBachillerato") %>' /></td>
-                    <td>
                         <asp:Label ID="lblIdTipoBachillerato" runat="server" Text='<%# Eval("IdTipoBachillerato") %>' /></td>
                     <td>
-                        <asp:Label ID="lblEnfasis" runat="server" Text='<%# Eval("Enfasis") %>' /></td>
+                        <asp:Label ID="lblTipoBachillerato" runat="server" Text='<%# Eval("TipoBachillerato") %>' /></td>
 
                     <th>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditTipoContactoBtn" CommandName="Editar" CommandArgument='<%# Eval("IdBachillerato")%>' ToolTip="Editar">
+                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditTipoBachilleratoBtn" CommandName="Editar" CommandArgument='<%# Eval("IdTipoBachillerato")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </th>
 
                     <th>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteTipoContactoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdBachillerato")%>' ToolTip="Eliminar">
+                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteTipoBachilleratoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdTipoBachillerato")%>' ToolTip="Eliminar">
                             <i class="fa  fa-eraser fa-sm"></i>
                         </asp:LinkButton>
 
@@ -84,12 +80,12 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar nuevo Bachillerato.</b>
+                                <b id="addModalLabel">Agregar nuevo Tipo de Bachillerato.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="BachilleratoDS" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdBachillerato" ForeColor="#333333"
+                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="TipoBachilleratoDS" Width="100%"
+                                    CellPadding="4" DataKeyNames="IdTipoBachillerato" ForeColor="#333333"
                                     DefaultMode="Insert"
                                     OnItemInserted="FormView1_ItemInserted">
                                     <EditItemTemplate>
@@ -99,23 +95,18 @@
                                     <InsertItemTemplate>
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-3">IdBachillerato</div>
+                                                <div class="col-3">ID</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdBachillerato" runat="server" Text='<%# Bind("IdBachillerato") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdTipoBachillerato" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">IdTipoBachillerato</div>
+                                                <div class="col-3">Tipo de Bachillerato</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoBachillerato" runat="server" Text='<%# Bind("IdTipoBachillerato") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtTipoBachillerato" runat="server" Text='<%# Bind("TipoBachillerato") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-3">Enfasis</div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtEnfasis" runat="server" Text='<%# Bind("Enfasis") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                </div>
-                                            </div>
+
                                         </div>
 
 
@@ -148,35 +139,31 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="editModalLabel">Modificar Bachillerato.</b>
+                                <b id="editModalLabel">Modificar Tipo de Bachillerato.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
                                 <asp:FormView ID="EditFormView" runat="server" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdBachillerato" ForeColor="#333333"
+                                    CellPadding="4" DataKeyNames="IdTipoBachillerato" ForeColor="#333333"
                                     DefaultMode="Edit"
                                     OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                     <EditItemTemplate>
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-3">IdBachillerato</div>
+                                                <div class="col-3">ID</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdBachillerato" runat="server" Text='<%# Bind("IdBachillerato") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdTipoBachillerato" runat="server" Text='<%# Bind("IdTipoBachillerato") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">IdTipoBachillerato</div>
+                                                <div class="col-3">Tipo de Bachillerato</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoBachillerato" runat="server" Text='<%# Bind("IdTipoBachillerato") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtTipoBachillerato" runat="server" Text='<%# Bind("TipoBachillerato") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-3">Enfasis</div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtEnfasis" runat="server" Text='<%# Bind("Enfasis") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                </div>
-                                            </div>
+
                                         </div>
+
 
 
                                         <asp:LinkButton ID="AcceptButton" runat="server" CausesValidation="False" CommandName="Update" Text="Aceptar" CssClass="btn btn-success" />
@@ -209,15 +196,15 @@
 
 
         <!-- #region DataSources -->
-        <asp:SqlDataSource ID="BachilleratoDS"
+        <asp:SqlDataSource ID="TipoBachilleratoDS"
             runat="server" ConnectionString="<%$ ConnectionStrings:EmpleosDBContext %>"
-            InsertCommand="educacion.sp_Bachillerato_insert" InsertCommandType="StoredProcedure"
-            SelectCommand="educacion.sp_Bachillerato_get_all" SelectCommandType="StoredProcedure">
+            InsertCommand="educacion.sp_TipoBachillerato_insert" InsertCommandType="StoredProcedure"
+            SelectCommand="educacion.sp_TipoBachillerato_get_all" SelectCommandType="StoredProcedure">
             <DeleteParameters>
             </DeleteParameters>
             <InsertParameters>
-                <asp:Parameter Name="IdTipoBachillerato" Type="Int32" />
-                <asp:Parameter Name="Enfasis" Type="String" />
+              
+                <asp:Parameter Name="TipoBachillerato" Type="String" />
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
@@ -230,5 +217,4 @@
 
 
     </div>
-
 </asp:Content>

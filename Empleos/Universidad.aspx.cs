@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace Empleos
 {
-    public partial class TipoContacto : System.Web.UI.Page
+    public partial class Universidad : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,22 +18,22 @@ namespace Empleos
 
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("TipoContacto.aspx");
+            Response.Redirect("Universidad.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("TipoContacto.aspx");
+            Response.Redirect("Universidad.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(TipoContactoDS.ConnectionString);
+            SqlConnection con = new SqlConnection(UniversidadDS.ConnectionString);
 
-            cmd = new SqlCommand("general.[sp_TipoContacto_get_TipoContacto]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdTipoContacto", ID));
+            cmd = new SqlCommand("educacion.[sp_Universidad_get_Universidad]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdUniversidad", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -56,10 +55,10 @@ namespace Empleos
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(TipoContactoDS.ConnectionString);
+            SqlConnection con = new SqlConnection(UniversidadDS.ConnectionString);
 
-            cmd = new SqlCommand("general.[sp_TipoContacto_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdTipoContacto", ID));
+            cmd = new SqlCommand("educacion.[sp_Universidad_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdUniversidad", ID));
 
 
 
@@ -89,7 +88,7 @@ namespace Empleos
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                TipoContactoListView.DataBind();
+                UniversidadListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminò correctamente.";
                 ErrorLabel.Visible = true;
@@ -120,20 +119,21 @@ namespace Empleos
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtIdTipoContacto = (TextBox)EditFormView.FindControl("txtIdTipoContacto");
-                TextBox txtTipoContacto = (TextBox)EditFormView.FindControl("txtTipoContacto");
+                TextBox txtIdUniversidad = (TextBox)EditFormView.FindControl("txtIdUniversidad");
+                TextBox txtUniversidad = (TextBox)EditFormView.FindControl("txtUniversidad");
+
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
-                SqlConnection conn = new SqlConnection(TipoContactoDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(UniversidadDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "general.sp_TipoContacto_update";
+                cmd.CommandText = "educacion.sp_Universidad_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdTipoContacto", txtIdTipoContacto.Text);
-                cmd.Parameters.AddWithValue("@TipoContacto", txtTipoContacto.Text);
+                cmd.Parameters.AddWithValue("@IdUniversidad", txtIdUniversidad.Text);
+                cmd.Parameters.AddWithValue("@Universidad", txtUniversidad.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -143,9 +143,9 @@ namespace Empleos
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("TipoContacto.aspx");
+                Response.Redirect("Universidad.aspx");
 
-               
+
             }
             catch (Exception ex)
             {
@@ -162,7 +162,7 @@ namespace Empleos
             ErrorLabel.Text = "El Registro de actualizò correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            TipoContactoListView.DataBind();
+            UniversidadListView.DataBind();
 
         }
     }

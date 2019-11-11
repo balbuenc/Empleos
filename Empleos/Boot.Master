@@ -31,7 +31,7 @@
 
 </head>
 <body>
-   <form id="form1" runat="server">
+    <form id="form1" runat="server">
         <div>
 
             <div>
@@ -113,19 +113,26 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                                 <h6 class="dropdown-header">Administración:</h6>
-                                <a class="dropdown-item" href="/TipoContacto.aspx">Tipo de Contacto</a>
-                               
+                                <a class="dropdown-item" href="/TipoContacto.aspx">Tipo Contacto</a>
+
                                 <div class="dropdown-divider"></div>
-                                 <h6 class="dropdown-header">Educaciòn:</h6>
-                                <a class="dropdown-item" href="/Bachillerato.aspx">Bachillerato</a>
-                               
+                                <h6 class="dropdown-header">Educaciòn:</h6>
+                                <a class="dropdown-item" href="/TipoBachillerato.aspx">Tipo Bachillerato</a>
+                                <a class="dropdown-item" href="/Bachillerato.aspx">Bachilleratos</a>
+                                <a class="dropdown-item" href="/Carrera.aspx">Carreras</a>
+                                <a class="dropdown-item" href="/Universidad.aspx">Universidades</a>
+
+                                <div class="dropdown-divider"></div>
+                                <h6 class="dropdown-header">Postulantes:</h6>
+                                <a class="dropdown-item" href="/Postulante.aspx">Postulantes</a>
+                                
                             </div>
                         </li>
-                       
+
                         <li class="nav-item">
                             <a class="nav-link" href="Ciudades.aspx">
                                 <i class="fas fa-fw fa-chart-area"></i>
-                                <span>Estadisticas</span></a>
+                                <span>Captacitaciones</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Ciudades.aspx">
@@ -176,7 +183,7 @@
 
 
                 <!-- Bootstrap core JavaScript-->
-                  <%--  <script src="vendor/jquery/jquery.min.js"></script>
+                <%--  <script src="vendor/jquery/jquery.min.js"></script>
                 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
 
                 <script src="Scripts/jquery-3.0.0.min.js"></script>
@@ -198,9 +205,9 @@
                 <script src="Scripts/bootstrap-datepicker.js"></script>
                 <link href="Content/bootstrap-datepicker.css" rel="stylesheet" />
 
-             
 
-               
+
+
             </div>
         </div>
     </form>

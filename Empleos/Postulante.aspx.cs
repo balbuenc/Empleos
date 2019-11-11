@@ -9,31 +9,30 @@ using System.Web.UI.WebControls;
 
 namespace Empleos
 {
-    public partial class Bachillerato : System.Web.UI.Page
+    public partial class Postulante : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("Bachillerato.aspx");
+            Response.Redirect("Postulante.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Bachillerato.aspx");
+            Response.Redirect("Postulante.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(BachilleratoDS.ConnectionString);
+            SqlConnection con = new SqlConnection(PostulanteDS.ConnectionString);
 
-            cmd = new SqlCommand("educacion.[sp_Bachillerato_get_Bachillerato]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdBachillerato", ID));
+            cmd = new SqlCommand("empleo.[sp_Postulante_get_Postulante]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdPostulante", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -55,10 +54,10 @@ namespace Empleos
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(BachilleratoDS.ConnectionString);
+            SqlConnection con = new SqlConnection(PostulanteDS.ConnectionString);
 
-            cmd = new SqlCommand("educacion.[sp_Bachillerato_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdBachillerato", ID));
+            cmd = new SqlCommand("empleo.[sp_Postulante_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdPostulante", ID));
 
 
 
@@ -88,7 +87,7 @@ namespace Empleos
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                BachilleratoListView.DataBind();
+                PostulanteListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminò correctamente.";
                 ErrorLabel.Visible = true;
@@ -119,22 +118,51 @@ namespace Empleos
             try
             {
                 //Obtengo los valores de los campos a editar
+                TextBox txtIdPostulante = (TextBox)EditFormView.FindControl("txtIdPostulante");
+                TextBox txtcod_funcionario = (TextBox)EditFormView.FindControl("txtcod_funcionario");
+                TextBox txtNombres = (TextBox)EditFormView.FindControl("txtNombres");
+                TextBox txtApellidos = (TextBox)EditFormView.FindControl("txtApellidos");
+                TextBox txtLogin = (TextBox)EditFormView.FindControl("txtLogin");
+                TextBox txtIdTipoDocumento = (TextBox)EditFormView.FindControl("txtIdTipoDocumento");
+                TextBox txtNumeroDocumento = (TextBox)EditFormView.FindControl("txtNumeroDocumento");
+                TextBox txtFechaNacimiento = (TextBox)EditFormView.FindControl("txtFechaNacimiento");
+                TextBox txtSexo = (TextBox)EditFormView.FindControl("txtSexo");
+                TextBox txtIdEstadoCivil = (TextBox)EditFormView.FindControl("txtIdEstadoCivil");
+                TextBox txtIdCiudad = (TextBox)EditFormView.FindControl("txtIdCiudad");
+                TextBox txtIdNacionalidad = (TextBox)EditFormView.FindControl("txtIdNacionalidad");
+                TextBox txtEsFuncionario = (TextBox)EditFormView.FindControl("txtEsFuncionario");
                 TextBox txtIdBachillerato = (TextBox)EditFormView.FindControl("txtIdBachillerato");
-                TextBox txtIdTipoBachillerato = (TextBox)EditFormView.FindControl("txtIdTipoBachillerato");
-                TextBox txtEnfasis = (TextBox)EditFormView.FindControl("txtEnfasis");
+                TextBox txtFormacionUniversitaria = (TextBox)EditFormView.FindControl("txtFormacionUniversitaria");
+                TextBox txtIdCarrera = (TextBox)EditFormView.FindControl("txtIdCarrera");
+                TextBox txtIdUniversidad = (TextBox)EditFormView.FindControl("txtIdUniversidad");
+
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
-                SqlConnection conn = new SqlConnection(BachilleratoDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(PostulanteDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "educacion.sp_Bachillerato_update";
+                cmd.CommandText = "educacion.sp_Postulante_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
+                cmd.Parameters.AddWithValue("@IdPostulante", txtIdPostulante.Text);
+                cmd.Parameters.AddWithValue("@cod_funcionario", txtcod_funcionario.Text);
+                cmd.Parameters.AddWithValue("@Nombres", txtNombres.Text);
+                cmd.Parameters.AddWithValue("@Apellidos", txtApellidos.Text);
+                cmd.Parameters.AddWithValue("@Login", txtLogin.Text);
+                cmd.Parameters.AddWithValue("@IdTipoDocumento", txtIdTipoDocumento.Text);
+                cmd.Parameters.AddWithValue("@NumeroDocumento", txtNumeroDocumento.Text);
+                cmd.Parameters.AddWithValue("@FechaNacimiento", txtFechaNacimiento.Text);
+                cmd.Parameters.AddWithValue("@Sexo", txtSexo.Text);
+                cmd.Parameters.AddWithValue("@IdEstadoCivil", txtIdEstadoCivil.Text);
+                cmd.Parameters.AddWithValue("@IdCiudad", txtIdCiudad.Text);
+                cmd.Parameters.AddWithValue("@IdNacionalidad", txtIdNacionalidad.Text);
+                cmd.Parameters.AddWithValue("@EsFuncionario", txtEsFuncionario.Text);
                 cmd.Parameters.AddWithValue("@IdBachillerato", txtIdBachillerato.Text);
-                cmd.Parameters.AddWithValue("@IdTipoBachillerato", txtIdTipoBachillerato.Text);
-                cmd.Parameters.AddWithValue("@Enfasis", txtEnfasis.Text);
+                cmd.Parameters.AddWithValue("@FormacionUniversitaria", txtFormacionUniversitaria.Text);
+                cmd.Parameters.AddWithValue("@IdCarrera", txtIdCarrera.Text);
+                cmd.Parameters.AddWithValue("@IdUniversidad", txtIdUniversidad.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -144,7 +172,7 @@ namespace Empleos
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("Bachillerato.aspx");
+                Response.Redirect("Postulante.aspx");
 
 
             }
@@ -163,8 +191,9 @@ namespace Empleos
             ErrorLabel.Text = "El Registro de actualizò correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            BachilleratoListView.DataBind();
+            PostulanteListView.DataBind();
 
         }
+
     }
 }
